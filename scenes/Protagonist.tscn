@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhvsuaqfbrsac"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mheto"]
+radius = 25.0
+height = 66.0
+
+[node name="Protagonist" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_mheto")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="InteractZone" type="Area2D" parent="."]

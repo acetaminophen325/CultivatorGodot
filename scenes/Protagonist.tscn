@@ -1,14 +1,41 @@
-[gd_scene load_steps=2 format=3 uid="uid://dhvsuaqfbrsac"]
+[gd_scene load_steps=5 format=3 uid="uid://dhvsuaqfbrsac"]
+
+[ext_resource type="Script" uid="uid://rkwuxsf00gxa" path="res://scenes/protagonist.gd" id="1_tpy0h"]
+[ext_resource type="Texture2D" uid="uid://dw7qx20bb4lfa" path="res://art/sprites/soulknight-avatar.jpg" id="2_ghcup"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mheto"]
 radius = 25.0
 height = 66.0
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_i1b8q"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ghcup")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 0.0
+}]
+
 [node name="Protagonist" type="CharacterBody2D"]
+script = ExtResource("1_tpy0h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_mheto")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1.5258789e-05, 7.6293945e-06)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_i1b8q")
+animation = &"idle"
 
 [node name="InteractZone" type="Area2D" parent="."]
+
+[connection signal="body_entered" from="InteractZone" to="." method="_on_interact_zone_body_entered"]
+[connection signal="body_exited" from="InteractZone" to="." method="_on_interact_zone_body_exited"]
